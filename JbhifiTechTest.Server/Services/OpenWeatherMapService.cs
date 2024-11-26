@@ -20,14 +20,19 @@ namespace JbhifiTechTest.Server.Services
 
         public async Task<string> GetWeatherDetailsAsync(string city, string country)
         {
-            var httpClient = _httpClientFactory.CreateClient();
+            var httpClient = _httpClientFactory.CreateClient("OpenWeatherMap");
             var response = await httpClient.GetAsync(string.Format(url, city, country, apiKey));
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();
                 var parsedResult = JObject.Parse(result)["weather"];
                 var weatherWithDesc = parsedResult.ToObject<List<Weather>>().Where(x => x.Description != null);
-                return weatherWithDesc.Select(x => x.Description).FirstOrDefault();
+                var description = weatherWithDesc.Select(x => x.Description).FirstOrDefault();
+
+                if (!string.IsNullOrEmpty(description))
+                {
+                    return $"The weather forecase for {city}, {country} is {description}";
+                }
             }
             
             if(response.StatusCode == HttpStatusCode.NotFound)

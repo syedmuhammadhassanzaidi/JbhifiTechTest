@@ -26,7 +26,6 @@ namespace JbhifiTechTest.Server.Controllers
                 }
 
                 var desc = await _openWeatherMapService.GetWeatherDetailsAsync(city, country);
-
                 return Ok(desc);
             }
 

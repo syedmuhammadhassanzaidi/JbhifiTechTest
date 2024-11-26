@@ -2,10 +2,44 @@
     max-width: 1280px;
     margin: 0 auto;
     padding: 2rem;
-    text-align: center;
+    text-align: left;
 }
 
-th, td {
+/* th, td {
     padding-left: 1rem;
     padding-right: 1rem;
-}
+} */
+
+.form-control {
+    margin: 0.5rem 0;
+  }
+  
+  .form-control label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-control input {
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    font: inherit;
+    line-height: 1.5rem;
+    padding: 0 0.25rem;
+  }
+  
+  .form-control input:focus {
+    outline: none;
+    background: #2107b3;
+    border-color: #14059e;
+  }
+  
+  .form-control.invalid input{
+  border-color: red;
+  background: #ffd7d7;
+  }
+  
+  .form-control.invalid label{
+    color: red;
+    }
