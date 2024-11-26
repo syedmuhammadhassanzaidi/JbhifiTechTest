@@ -15,16 +15,25 @@ namespace JbhifiTechTest.Server.Controllers
             _openWeatherMapService = openWeatherMapService;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet]
+        public async Task<IActionResult> Get(string city, string country)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            try
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                //Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                if (string.IsNullOrEmpty(city) || string.IsNullOrEmpty(country))
+                {
+                    return BadRequest("City and Country are required values");
+                }
+
+                var desc = await _openWeatherMapService.GetWeatherDetailsAsync(city, country);
+
+                return Ok(desc);
+            }
+
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

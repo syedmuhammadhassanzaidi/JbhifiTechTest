@@ -1,5 +1,6 @@
 using AspNetCoreRateLimit;
 using JbhifiTechTest.Server.Services;
+using JbhifiTechTest.Server.Middleware;
 using System.Diagnostics.CodeAnalysis;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,7 +50,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-//app.UseMiddleware<UseApiKeyConfiguration>(); TODO
+app.UseMiddleware<ApiKeyMiddleware>();
 
 app.UseClientRateLimiting();
 
