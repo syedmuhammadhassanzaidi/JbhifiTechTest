@@ -1,0 +1,6 @@
+@JbhifiTechTest.Server_HostAddress = http://localhost:5032
+
+GET {{JbhifiTechTest.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
