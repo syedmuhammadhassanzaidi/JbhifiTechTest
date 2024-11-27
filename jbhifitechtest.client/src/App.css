@@ -5,11 +5,6 @@
     text-align: left;
 }
 
-/* th, td {
-    padding-left: 1rem;
-    padding-right: 1rem;
-} */
-
 .form-control {
     margin: 0.5rem 0;
   }
@@ -28,18 +23,5 @@
     line-height: 1.5rem;
     padding: 0 0.25rem;
   }
+
   
-  .form-control input:focus {
-    outline: none;
-    background: #2107b3;
-    border-color: #14059e;
-  }
-  
-  .form-control.invalid input{
-  border-color: red;
-  background: #ffd7d7;
-  }
-  
-  .form-control.invalid label{
-    color: red;
-    }

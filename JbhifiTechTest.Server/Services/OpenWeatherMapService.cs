@@ -31,7 +31,7 @@ namespace JbhifiTechTest.Server.Services
 
                 if (!string.IsNullOrEmpty(description))
                 {
-                    return $"The weather forecase for {city}, {country} is {description}";
+                    return $"The weather forecast for {city}, {country} is {description}";
                 }
             }
             
